@@ -19,6 +19,8 @@ const signToken = (id) => {
 };
 
 const createSendToken = (user, statusCode, res) => {
+
+  console.log("hello1");
   const token = signToken(user._id);
   const cookieOptions = {
     expires: new Date(
@@ -28,9 +30,13 @@ const createSendToken = (user, statusCode, res) => {
     domain: ".netlify.app",
   };
 
+  console.log("hello2");
+
   // if (process.env.NODE_ENV === "production") cookieOptions.secure = true;
 
   res.cookie("jwt", token, cookieOptions);
+
+  console.log("hello3");
 
   // Remove password from output
   user.password = undefined;
