@@ -10,7 +10,6 @@ module.exports = class Email {
   }
 
   newTransport() {
-    if (process.env.NODE_ENV === "production") {
       return nodemailer.createTransport({
         host: process.env.BREVO_HOST,
         port: process.env.BREVO_PORT,
@@ -19,17 +18,6 @@ module.exports = class Email {
           pass: process.env.BREVO_PASSWORD,
         },
       });
-    }
-
-    // else capture the mail in the mailtrap.io
-    return nodemailer.createTransport({
-      host: process.env.EMAIL_HOST,
-      port: process.env.EMAIL_PORT,
-      auth: {
-        user: process.env.EMAIL_USERNAME,
-        pass: process.env.EMAIL_PASSWORD,
-      },
-    });
   }
 
   async sendWelcomeHTML() {
