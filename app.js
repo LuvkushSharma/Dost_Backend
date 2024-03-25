@@ -12,7 +12,7 @@ const cors = require('cors');
 const app = express();
 
 const corsOptions = { 
-  origin:'https://resonant-duckanoo-ae612c.netlify.app/', 
+  origin:'*', 
   credentials:true,            
   optionSuccessStatus:200
 }
