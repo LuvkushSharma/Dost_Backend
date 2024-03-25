@@ -10,7 +10,7 @@ const Chat = require("./models/chat.model");
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
-    origin:'https://resonant-duckanoo-ae612c.netlify.app/', 
+    origin:'*', 
     credentials:true,            
     optionSuccessStatus:200
   },
