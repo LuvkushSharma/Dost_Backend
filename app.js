@@ -12,9 +12,9 @@ const cors = require('cors');
 const app = express();
 
 const corsOptions = { 
-  AccessControlAllowOrigin: '',  
-  origin: 'https://resonant-duckanoo-ae612c.netlify.app/',  
-  methods: 'GET,PUT,PATCH,POST,DELETE' 
+  origin:'https://resonant-duckanoo-ae612c.netlify.app/', 
+  credentials:true,            
+  optionSuccessStatus:200
 }
 
 app.use(cors(corsOptions))
