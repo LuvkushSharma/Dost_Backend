@@ -11,9 +11,13 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const app = express();
 
-app.options('*', cors());
+const corsOptions = { 
+  AccessControlAllowOrigin: '',  
+  origin: 'https://resonant-duckanoo-ae612c.netlify.app/',  
+  methods: 'GET,PUT,PATCH,POST,DELETE' 
+}
 
-app.use(cors());
+app.use(cors(corsOptions))
 
 app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
