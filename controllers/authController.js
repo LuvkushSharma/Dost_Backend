@@ -70,7 +70,7 @@ exports.signUp = catchAsync(async (req, res, next) => {
     title: req.body.title,
   });
 
-  const url = `${req.protocol}://${req.get("host")}/profile`;
+  const url = `https://dostfrnd.onrender.com/profile`;
 
   await new Email(newUser, url).sendWelcome();
 
@@ -238,7 +238,7 @@ exports.forgotPassword = async (req, res, next) => {
 
     try {
       // 3️⃣ ) Send it to user's email
-      const resetURL = `${req.protocol}://localhost:5173/resetPassword/${resetToken}`;
+      const resetURL = `https://dostfrnd.onrender.com/resetPassword/${resetToken}`;
 
       // --------- Lec_10 ----------
       await new Email(user, resetURL).sendPasswordReset();
