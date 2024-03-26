@@ -27,7 +27,7 @@ const createSendToken = (user, statusCode, res) => {
     ),
     httpOnly: true,
     domain: ".dostfrnd.onrender.com"
-    sameSite: 'Lax'
+    SameSite: 'Lax'
   };
 
   console.log("cookie : ",cookieOptions);
