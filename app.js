@@ -13,7 +13,7 @@ const app = express();
 
 const corsOptions = { 
     credentials: true,
-    origin: "https://dostfrnd.onrender.com",
+    origin: "*",
     optionsSuccessStatus: 200,
 }
 
