@@ -104,7 +104,7 @@ exports.logout = (req, res) => {
 exports.protect = catchAsync(async (req, res, next) => {
   let token;
 
-  console.log("req.cookies : ",req.cookies);
+  console.log("req.cookies : ",req.cookies.jwt);
 
   if (
     req.headers.authorization &&
@@ -114,6 +114,8 @@ exports.protect = catchAsync(async (req, res, next) => {
   } else if (req.cookies.jwt) {
     token = req.cookies.jwt;
   }
+
+  token = localStorage.getItem("jwt");
 
   // their is no token
   if (!token) {
