@@ -12,8 +12,6 @@ const cors = require('cors');
 const app = express();
 
 
-app.use(cookieParser());
-
 const corsOptions = { 
     credentials: true,
     origin: "*",
@@ -21,6 +19,9 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions))
+
+
+app.use(cookieParser());
 
 app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
