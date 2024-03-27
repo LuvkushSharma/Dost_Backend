@@ -105,16 +105,15 @@ exports.protect = catchAsync(async (req, res, next) => {
   let token;
 
   // console.log("req.cookies : ",req.cookies.jwt);
-  console.log("helllo");
 
-  if (
-    req.headers?.authorization &&
-    req.headers?.authorization.startsWith("Bearer")
-  ) {
-    token = req.headers.authorization.split(" ")[1];
-  } else if (req.cookies?.jwt) {
-    token = req.cookies.jwt;
-  }
+  // if (
+  //   req.headers?.authorization &&
+  //   req.headers?.authorization.startsWith("Bearer")
+  // ) {
+  //   token = req.headers.authorization.split(" ")[1];
+  // } else if (req.cookies?.jwt) {
+  //   token = req.cookies?.jwt;
+  // }
 
   token = localStorage.getItem("jwt");
 
