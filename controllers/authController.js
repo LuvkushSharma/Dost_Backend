@@ -115,6 +115,8 @@ exports.protect = catchAsync(async (req, res, next) => {
   //   token = req.cookies?.jwt;
   // }
 
+  console.log("req.cookies : ", req);
+
   token = localStorage.getItem("jwt");
 
   console.log("token : ",token);
