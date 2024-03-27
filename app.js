@@ -12,9 +12,9 @@ const cors = require('cors');
 const app = express();
 
 const corsOptions = { 
-  origin:'*', 
-  credentials:true,            
-  optionSuccessStatus:200
+    credentials: true,
+    origin: "https://dostfrnd.onrender.com",
+    optionsSuccessStatus: 200,
 }
 
 app.use(cors(corsOptions))
