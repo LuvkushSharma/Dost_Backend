@@ -27,9 +27,9 @@ const createSendToken = (user, statusCode, res) => {
     ),
   };
 
-  // if (process.env.NODE_ENV === 'production') {
-  //   cookieOptions.secure = true;
-  // }
+  if (process.env.NODE_ENV === 'production') {
+    cookieOptions.secure = true;
+  }
 
   // Remove password from output
   user.password = undefined;
@@ -63,7 +63,7 @@ exports.signUp = catchAsync(async (req, res, next) => {
     title: req.body.title,
   });
 
-  const url = `https://dostfrnd.onrender.com/profile`;
+  const url = `https://dostfrnd.vercel.app/profile`;
 
   await new Email(newUser, url).sendWelcome();
 
@@ -233,7 +233,7 @@ exports.forgotPassword = async (req, res, next) => {
 
     try {
       // 3️⃣ ) Send it to user's email
-      const resetURL = `https://dostfrnd.onrender.com/resetPassword/${resetToken}`;
+      const resetURL = `https://dostfrnd.vercel.app/resetPassword/${resetToken}`;
 
       // --------- Lec_10 ----------
       await new Email(user, resetURL).sendPasswordReset();
