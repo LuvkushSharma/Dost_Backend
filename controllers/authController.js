@@ -105,15 +105,15 @@ exports.logout = (req, res) => {
 exports.protect = catchAsync(async (req, res, next) => {
   let token;
 
-  console.log("req.cookie : ",req.cookie?.jwt);
+  console.log("req.cookies : ",req.cookies?.jwt);
 
   if (
     req.headers?.authorization &&
     req.headers?.authorization.startsWith("Bearer")
   ) {
     token = req.headers.authorization.split(" ")[1];
-  } else if (req.cookie?.jwt) {
-    token = req.cookie?.jwt;
+  } else if (req.cookies?.jwt) {
+    token = req.cookies?.jwt;
   }
 
 
