@@ -104,26 +104,21 @@ exports.logout = (req, res) => {
 exports.protect = catchAsync(async (req, res, next) => {
   let token;
 
-  console.log("req.cookies : ",req.cookies?.jwt);
+    if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
 
-  if (
-    req.headers?.authorization &&
-    req.headers?.authorization.startsWith("Bearer")
-  ) {
-    token = req.headers.authorization.split(" ")[1];
-  } else if (req.cookies?.jwt) {
-    token = req.cookies?.jwt;
-  }
+      token = req.headers.authorization.split(' ')[1];
+     
+    } else if (req.cookies.jwt) {
+         
+         token = req.cookies.jwt;
+    }
+    
+    // their is no token
+    if (!token) {
 
-
-  console.log("token : ",token);
-
-  // their is no token
-  if (!token) {
-    return next(
-      new AppError("You are not loggen in! Please login to get access", 401)
-    );
-  }
+      return next(new AppError ('You are not loggen in! Please login to get access' , 401));
+      
+    }
 
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
 
