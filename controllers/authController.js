@@ -152,10 +152,10 @@ exports.protect = catchAsync(async (req, res, next) => {
 
 exports.isLoggedIn = catchAsync(async (req, res, next) => {
   try {
-    if (req.cookies.jwt) {
+    if (req.cookie.jwt) {
       // 1) verify token
       const decoded = await promisify(jwt.verify)(
-        req.cookies.jwt,
+        req.cookie.jwt,
         process.env.JWT_SECRET
       );
 
