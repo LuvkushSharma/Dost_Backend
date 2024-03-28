@@ -102,16 +102,20 @@ exports.logout = (req, res) => {
 };
 
 exports.protect = catchAsync(async (req, res, next) => {
-  let token;
+   let token = "";
 
-    if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+    // if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
 
-      token = req.headers.authorization.split(' ')[1];
+    //   token = req.headers.authorization.split(' ')[1];
      
-    } else if (req.cookies.jwt) {
+    // } else if (req.cookies.jwt) {
          
-         token = req.cookies.jwt;
-    }
+    //      token = req.cookies.jwt;
+    // }
+
+    token = localStorage.getItem("jwt");
+
+    console.log("token : ",token);
     
     // their is no token
     if (!token) {
