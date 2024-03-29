@@ -27,6 +27,7 @@ const createSendToken = (user, statusCode, res) => {
     ),
     httpOnly: true,
     domain: '.onrender.com',
+    sameSite: "None"
   };
   if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
   
