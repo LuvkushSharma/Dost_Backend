@@ -63,7 +63,7 @@ exports.signUp = catchAsync(async (req, res, next) => {
     title: req.body.title,
   });
 
-  const url = `https://dostfrnd.vercel.app/profile`;
+  const url = `https://dostfrnd.onrender.com/profile`;
 
   await new Email(newUser, url).sendWelcome();
 
