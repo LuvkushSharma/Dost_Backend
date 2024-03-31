@@ -19,7 +19,7 @@ app.use(cookieParser());
 const corsOptions = { 
     credentials: true,
     origin: "https://dostfrnd.onrender.com",
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    methods: ["GET", "POST", "PUT", "DELETE","PATCH"],
     optionsSuccessStatus: 200,
 }
 
