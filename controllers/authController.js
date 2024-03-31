@@ -90,18 +90,15 @@ exports.logout = (req, res,next) => {
 
   console.log("successfully loggedout");
   
-  res.clearCookie('jwt', {
-      path: '/', 
-      domain: 'dost-backend.onrender.com', 
-      secure: true, 
-      httpOnly: true, 
-      sameSite : "none",
-      expires: new Date(0), 
-    });
+  res.cookie('jwt' , 'loggedout' , {
+     
+    // After 5s we will we log out.
+     expires: new Date(Date.now() + 5 * 1000),
+     httpOnly: true
 
-  res.status(204).json({data :"cookie deleted"});
+   });
 
-  next();
+   res.status(200).json({status: 'success'});
    
 };
 
