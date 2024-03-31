@@ -90,16 +90,7 @@ exports.logout = (req, res,next) => {
 
   console.log("successfully loggedout");
   
-  res.cookie('jwt' , 'loggedout' , {
-     
-    // After 5s we will we log out.
-     expires: new Date(Date.now() + 5 * 1000),
-     httpOnly: true,
-     sameSite: "none",
-     secure : true
-   });
-
-   res.status(200).json({status: 'success'});
+   res.status(204).cookie('jwt' , 'loggedout').json({status: 'success'});
    
 };
 
