@@ -88,10 +88,17 @@ exports.login = catchAsync(async (req, res, next) => {
 
 exports.logout = (req, res,next) => {
 
-  console.log("successfully loggedout");
-  console.log ("req.cookies : ",req.cookies?.jwt);
+  const cookieOptions = {
+    expires: new Date(
+      Date.now() 
+    ),
+    sameSite: "none",
+    httpOnly: true,
+    domain: ".onrender.com"
+  };
+  if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
   
-   res.status(204).cookie('jwt' , 'loggedout').json({status: 'success'});
+   res.status(204).cookie('jwt' , 'loggedout' , cookieOptions).json({status: 'success'});
    
 };
 
