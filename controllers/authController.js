@@ -90,7 +90,6 @@ exports.logout = (req, res,next) => {
 
   console.log("successfully loggedout");
   console.log ("req.cookies : ",req.cookies?.jwt);
-  req.cookies?.jwt = null;
   
    res.status(204).cookie('jwt' , 'loggedout').json({status: 'success'});
    
