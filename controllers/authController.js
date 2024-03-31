@@ -86,16 +86,21 @@ exports.login = catchAsync(async (req, res, next) => {
   createSendToken(user, 200, res);
 });
 
-exports.logout = (req, res) => {
+exports.logout = (req, res,next) => {
 
   console.log("successfully loggedout");
 
-  res.status(200).cookie("jwt", "loggedout", {
-      // After 5s we will we log out.
-      expires: new Date(Date.now() + 5 * 1000),
-      sameSite: "none",
-      httpOnly: true,
-    }).json({ status: "success" });
+  const cookieOptions = {
+    // After 5s we will we log out.
+    expires: new Date(Date.now() + 5 * 1000),
+    sameSite: "none",
+    httpOnly: true,
+  };
+  if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
+
+  res.status(200).cookie('jwt', "loggedout", cookieOptions).json({ status: "success" });
+
+  
 };
 
 exports.protect = catchAsync(async (req, res, next) => {
