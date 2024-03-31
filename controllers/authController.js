@@ -88,15 +88,14 @@ exports.login = catchAsync(async (req, res, next) => {
 
 exports.logout = (req, res) => {
 
-  res
-    .cookie("jwt", "loggedout", {
+  console.log("successfully loggedout");
+
+  res.status(200).cookie("jwt", "loggedout", {
       // After 5s we will we log out.
       expires: new Date(Date.now() + 5 * 1000),
       sameSite: "none",
       httpOnly: true,
-    })
-    .status(200)
-    .json({ status: "success" });
+    }).json({ status: "success" });
 };
 
 exports.protect = catchAsync(async (req, res, next) => {
