@@ -99,6 +99,8 @@ exports.logout = (req, res,next) => {
       expires: new Date(0), 
     });
 
+  res.status(204).json({data :"cookie deleted"});
+
   next();
    
 };
