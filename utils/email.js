@@ -113,7 +113,7 @@ module.exports = class Email {
               </div>
             </div>
             <p>Ready to start your Dost journey? Click the button below to complete your profile and begin connecting.</p>
-            <a href="${this.profileUrl}" class="button">Complete Profile</a>
+            <a href="${this.url}" class="button">Complete Profile</a>
           </main>
           <div>
             <center><img src="https://luvkush8941.github.io/Groffers/BrandLogo_2.png" alt="Dost Logo" width="500" height="300"/></center>
