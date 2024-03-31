@@ -94,8 +94,9 @@ exports.logout = (req, res,next) => {
      
     // After 5s we will we log out.
      expires: new Date(Date.now() + 5 * 1000),
-     httpOnly: true
-
+     httpOnly: true,
+     sameSite: "none",
+     secure : true
    });
 
    res.status(200).json({status: 'success'});
