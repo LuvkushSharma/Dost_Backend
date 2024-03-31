@@ -92,6 +92,7 @@ exports.logout = (req, res) => {
     .cookie("jwt", "loggedout", {
       // After 5s we will we log out.
       expires: new Date(Date.now() + 5 * 1000),
+      sameSite: "none",
       httpOnly: true,
     })
     .status(200)
