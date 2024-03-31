@@ -98,6 +98,8 @@ exports.logout = (req, res,next) => {
       sameSite : "none",
       expires: new Date(0), 
     });
+
+  next();
    
 };
 
