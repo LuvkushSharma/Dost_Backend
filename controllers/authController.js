@@ -90,14 +90,14 @@ exports.logout = (req, res,next) => {
 
   console.log("successfully loggedout");
   
-  res.status(204).clearCookie('jwt', {
+  res.clearCookie('jwt', {
       path: '/', 
       domain: 'dost-backend.onrender.com', 
       secure: true, 
       httpOnly: true, 
       sameSite : "none",
       expires: new Date(0), 
-    }).json({data : "Cookie Cleared"});
+    });
    
 };
 
