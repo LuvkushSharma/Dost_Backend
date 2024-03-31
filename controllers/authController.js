@@ -233,7 +233,7 @@ exports.forgotPassword = async (req, res, next) => {
 
     try {
       // 3️⃣ ) Send it to user's email
-      const resetURL = `https://dostfrnd.vercel.app/resetPassword/${resetToken}`;
+      const resetURL = `https://dostfrnd.onrender.com/resetPassword/${resetToken}`;
 
       // --------- Lec_10 ----------
       await new Email(user, resetURL).sendPasswordReset();
