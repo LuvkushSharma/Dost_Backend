@@ -89,18 +89,9 @@ exports.login = catchAsync(async (req, res, next) => {
 exports.logout = (req, res,next) => {
 
   console.log("successfully loggedout");
-
-  const cookieOptions = {
-    // After 5s we will we log out.
-    expires: new Date(Date.now() + 5 * 1000),
-    sameSite: "none",
-    httpOnly: true,
-  };
-  if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
-
-  res.status(200).cookie('jwt', "loggedout", cookieOptions).json({ status: "success" });
-
   
+  res.status(200).clearCookie('jwt').json({ status: "success" });
+   
 };
 
 exports.protect = catchAsync(async (req, res, next) => {
