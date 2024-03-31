@@ -108,7 +108,7 @@ exports.suggest = async (req, res) => {
     const suggestedUsers = await User.find({
       $and: [
         { _id: { $ne: currentUser._id } }, // Exclude current user
-        { participatedInHackathon: currentUser.participatedInHackathon },
+        // { participatedInHackathon: currentUser.participatedInHackathon },
         { title: currentUser.title },
         { _id: { $nin: currentUser.rejectedUsers } }, // Exclude rejected users
       ],
