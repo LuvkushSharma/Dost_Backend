@@ -33,6 +33,8 @@ exports.getChats = async (req, res) => {
 exports.deleteMessage = catchAsync(async (req, res, next) => {
   const { senderId, receiverId, message } = req.body;
 
+  console.log("deletemessage : " , req.body);
+
   // Check if the required parameters are provided
   if (!senderId || !receiverId || !message) {
     return res.status(400).json({ status: 'fail', message: 'Missing required parameters' });
