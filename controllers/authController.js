@@ -94,7 +94,6 @@ exports.logout = (req, res,next) => {
     ),
     sameSite: "none",
     httpOnly: true,
-    domain: ".onrender.com"
   };
   if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
   
