@@ -30,7 +30,7 @@ exports.getChats = async (req, res) => {
 };
 
 
-exports.deleteMessage = catchAsync(async (req, res, next) => {
+exports.deleteMessage = async (req, res, next) => {
   const { senderId, receiverId, message } = req.body;
 
   console.log("deletemessage : " , req.body);
@@ -57,7 +57,7 @@ exports.deleteMessage = catchAsync(async (req, res, next) => {
     console.error('Error deleting message:', error);
     res.status(500).json({ status: 'error', message: 'Internal server error' });
   }
-});
+};
 
 
 // Controller function to edit a message
