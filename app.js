@@ -25,6 +25,8 @@ const corsOptions = {
 
 app.use(cors(corsOptions))
 
+app.options('*' , cors(corsOptions));
+
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 
 app.use (express.static (path.join (__dirname , 'public')));
