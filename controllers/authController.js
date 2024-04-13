@@ -95,6 +95,9 @@ exports.logout = (req, res,next) => {
     sameSite: "none",
     httpOnly: true,
   };
+
+  console.log(req.headers?.cookie);
+  
   if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
   
    res.status(204).cookie('jwt' , 'loggedout' , cookieOptions).json({status: 'success'});
