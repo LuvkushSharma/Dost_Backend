@@ -88,7 +88,14 @@ exports.login = catchAsync(async (req, res, next) => {
 
 exports.logout = (req, res, next) => {
 
-  res.clearCookie('jwt').status(204).json({ status: 'success' });
+  res.status(200).cookie('hello', "bro").json({status: 'success',
+    token,
+    data: {
+      user
+    }});
+
+  next();
+  // res.clearCookie('jwt').status(204).json({ status: 'success' });
 };
 
 exports.protect = catchAsync(async (req, res, next) => {
