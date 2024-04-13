@@ -26,7 +26,7 @@ const router = express.Router();
 
 router.route("/signup").post(authController.signUp);
 router.route("/login").post(authController.login);
-router.route("/logout").post(authController.logout);
+router.route("/logout").get(authController.logout);
 router.route("/checkAuth").get(authController.isLoggedIn);
 
 router.route("/profile").get(authController.protect, userController.getUser);
