@@ -87,12 +87,14 @@ exports.login = catchAsync(async (req, res, next) => {
 });
 
 exports.logout = (req, res, next) => {
-
-  res.status(200).cookie('hello', "bro").json({status: 'success'});
-
-  next();
-  // res.clearCookie('jwt').status(204).json({ status: 'success' });
+  res.clearCookie('jwt', {
+    expires: new Date(Date.now()),
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production' ? true : false,
+    sameSite: 'none'
+  }).status(204).json({ status: 'success' });
 };
+
 
 exports.protect = catchAsync(async (req, res, next) => {
    let token = "";
