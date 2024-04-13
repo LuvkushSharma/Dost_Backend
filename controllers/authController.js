@@ -107,9 +107,11 @@ exports.protect = catchAsync(async (req, res, next) => {
   console.log ("req.cookies : ", req.cookies);
   console.log ("req.headers : ", req.headers);
 
-    if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+    if (req.headers?.cookie) {
 
-      token = req.headers.authorization.split(' ')[1];
+      const [_, jwtValue] = req.headers.cookie.split('=');
+
+      token = jwtValue;
      
     } else if (req.cookies?.jwt) {
          
