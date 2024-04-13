@@ -87,19 +87,8 @@ exports.login = catchAsync(async (req, res, next) => {
 });
 
 exports.logout = (req, res, next) => {
-  const cookieOptions = {
-    expires: new Date(Date.now()),
-    sameSite: "none",
-    httpOnly: true
-  };
 
-  // Set secure flag only in production and if the request is over HTTPS
-  if (process.env.NODE_ENV === 'production') {
-    cookieOptions.secure = true;
-  }
-
-  // Clear the JWT cookie by setting it to "loggedout"
-  res.clearCookie('jwt', cookieOptions).status(204).json({ status: 'success' });
+  res.clearCookie('jwt').status(204).json({ status: 'success' });
 };
 
 exports.protect = catchAsync(async (req, res, next) => {
