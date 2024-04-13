@@ -86,22 +86,20 @@ exports.login = catchAsync(async (req, res, next) => {
   createSendToken(user, 200, res);
 });
 
-exports.logout = (req, res,next) => {
-
+exports.logout = (req, res, next) => {
   const cookieOptions = {
-    expires: new Date(
-      Date.now() 
-    ),
+    expires: new Date(Date.now()),
     sameSite: "none",
-    httpOnly: true,
+    httpOnly: true
   };
 
-  console.log(req.headers?.cookie);
-  
-  if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
-  
-   res.status(204).cookie('jwt' , 'loggedout' , cookieOptions).json({status: 'success'});
-   
+  // Set secure flag only in production and if the request is over HTTPS
+  if (process.env.NODE_ENV === 'production') {
+    cookieOptions.secure = true;
+  }
+
+  // Clear the JWT cookie by setting it to "loggedout"
+  res.clearCookie('jwt', cookieOptions).status(204).json({ status: 'success' });
 };
 
 exports.protect = catchAsync(async (req, res, next) => {
