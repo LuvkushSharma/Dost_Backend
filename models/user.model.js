@@ -133,7 +133,7 @@ const userSchema = new mongoose.Schema({
       "Cloud Engineer",
       "B.Tech Hons. Student",
     ],
-    default: "Other", // Set a default value
+    default: "B.Tech Hons. Student", // Set a default value
   },
 
   cloudinaryImageUrl: {
