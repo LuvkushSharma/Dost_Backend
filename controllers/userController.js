@@ -397,9 +397,9 @@ const friendCountsByCategory = {
   "Mobile App Developer": new Set(),
   "DevOps Engineer": new Set(),
   "UI/UX Designer": new Set(),
-  QA: new Set(),
+  "QA": new Set(),
   "Cloud Engineer": new Set(),
-  Other: new Set(),
+  "B.Tech Hons. Student": new Set(),
 };
 
 // GET request to fetch counts of friends for each category
