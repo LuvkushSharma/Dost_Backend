@@ -131,7 +131,7 @@ const userSchema = new mongoose.Schema({
       "UI/UX Designer",
       "QA",
       "Cloud Engineer",
-      "Other",
+      "B.Tech Hons. Student",
     ],
     default: "Other", // Set a default value
   },
